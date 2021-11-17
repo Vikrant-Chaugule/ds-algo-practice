@@ -18,7 +18,7 @@ const linearSearch = (array, elementToSearch) => {
 
 // console.log(linearSearch([4,1,8,9,10], 11));
 
-// Approach 1: With the help of in-built method
+// Approach 2: With the help of in-built method
 // returns true if the element is present in the array or false if not
 
 const linearSearch2 = (array, elementToSearch) => {  
