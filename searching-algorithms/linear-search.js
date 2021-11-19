@@ -6,14 +6,14 @@
 
 // Approach 1: Without any in-built method
 const linearSearch = (array, elementToSearch) => {
-    let foundIndex = -1; // not found
-    for(let i=0; i< array.length; i++){
-        if(array[i] === elementToSearch){
-            foundIndex = i;
-            break;
-        }
+  let foundIndex = -1; // not found
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === elementToSearch) {
+      foundIndex = i;
+      break;
     }
-    return foundIndex;
+  }
+  return foundIndex;
 };
 
 // console.log(linearSearch([4,1,8,9,10], 11));
@@ -21,7 +21,7 @@ const linearSearch = (array, elementToSearch) => {
 // Approach 2: With the help of in-built method
 // returns true if the element is present in the array or false if not
 
-const linearSearch2 = (array, elementToSearch) => {  
-    return array.some((element) => element === elementToSearch)
-}
-console.log(linearSearch2([4,1,8,9,10], 10));
+const linearSearch2 = (array, elementToSearch) => {
+  return array.some((element) => element === elementToSearch);
+};
+console.log(linearSearch2([4, 1, 8, 9, 10], 10));
