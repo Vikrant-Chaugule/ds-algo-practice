@@ -76,6 +76,17 @@ class SinglyLinkedList {
     return this;
   }
 
+  // get the node at a given index
+  get(index) {
+    if (index < 0 || index >= this.length) return;
+    let currentNode = this.head;
+    while (index > 0) {
+      currentNode = currentNode.next;
+      index--;
+    }
+    return currentNode;
+  }
+
   print() {
     let node = this.head;
     for (let i = 0; i < this.length; i++) {
@@ -108,3 +119,5 @@ list.print(); // 3->2->1->5->10
 list.shift(); // 2->1->5->10
 list.shift(); // 1->5->10
 list.print(); // 1->5->10
+
+list.get(2); // 10
