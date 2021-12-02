@@ -50,6 +50,18 @@ class SinglyLinkedList {
     }
   }
 
+  // remove from the beginning
+  shift() {
+    if (!this.head) return;
+    let currentHead = this.head;
+    this.head = currentHead.next;
+    this.length--;
+    if (this.length <= 0) {
+      this.tail = null;
+    }
+    return currentHead;
+  }
+
   print() {
     let node = this.head;
     for (let i = 0; i < this.length; i++) {
