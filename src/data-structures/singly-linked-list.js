@@ -62,6 +62,20 @@ class SinglyLinkedList {
     return currentHead;
   }
 
+  // insert at the beginning
+  unshift(val) {
+    let newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
+
   print() {
     let node = this.head;
     for (let i = 0; i < this.length; i++) {
@@ -85,3 +99,12 @@ list.pop(); // 5->10->15->20
 list.pop(); // 5->10->15
 list.pop(); // 5->10
 list.print(); // 5->10
+
+list.unshift(1); // 1->5->10
+list.unshift(2); // 2->1->5->10
+list.unshift(3); // 3->2->1->5->10
+list.print(); // 3->2->1->5->10
+
+list.shift(); // 2->1->5->10
+list.shift(); // 1->5->10
+list.print(); // 1->5->10
