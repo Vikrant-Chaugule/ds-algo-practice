@@ -87,6 +87,14 @@ class SinglyLinkedList {
     return currentNode;
   }
 
+  // set the node at a given index
+  set(index, val) {
+    let node = this.get(index);
+    if (!node) return false;
+    node.val = val;
+    return true;
+  }
+
   print() {
     let node = this.head;
     for (let i = 0; i < this.length; i++) {
