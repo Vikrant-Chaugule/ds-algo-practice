@@ -110,6 +110,20 @@ class SinglyLinkedList {
     }
   }
 
+  // remove a node at a given index
+  remove(index) {
+    if (index < 0 || index >= this.length) return;
+    else if (index === this.length - 1) return this.pop();
+    else if (index === 0) return this.shift();
+    else {
+      let prevNode = this.get(index - 1);
+      let currentNode = prevNode.next;
+      prevNode.next = currentNode.next;
+      this.length--;
+      return currentNode;
+    }
+  }
+
   print() {
     let node = this.head;
     for (let i = 0; i < this.length; i++) {
