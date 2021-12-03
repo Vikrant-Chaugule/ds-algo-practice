@@ -95,6 +95,21 @@ class SinglyLinkedList {
     return true;
   }
 
+  // insert a node at a given index
+  insert(index, val) {
+    if (index < 0 || index > this.length) return false;
+    else if (index === this.length) return !!this.push(val);
+    else if (index === 0) return !!this.unshift(val);
+    else {
+      let prevNode = this.get(index - 1);
+      let newNode = new Node(val);
+      newNode.next = prevNode.next;
+      prevNode.next = newNode;
+      this.length++;
+      return true;
+    }
+  }
+
   print() {
     let node = this.head;
     for (let i = 0; i < this.length; i++) {
