@@ -143,6 +143,29 @@ class DoublyLinkedList {
     }
   }
 
+  // remove a node at a specific index
+  remove(index) {
+    if (index < 0 || index >= this.length) return;
+    else if (index === 0) return this.shift();
+    else if (index === this.length - 1) return this.pop();
+    else {
+      let node = this.get(index);
+      let prevNode = node.prev;
+      let nextNode = node.next;
+
+      // update the references in previous node and next node
+      prevNode.next = nextNode;
+      nextNode.prev = prevNode;
+
+      // clear the references or it will cause memory leaks
+      node.prev = null;
+      node.next = null;
+
+      this.length--;
+      return node;
+    }
+  }
+
   print() {
     let current = this.head;
     const arr = [];
