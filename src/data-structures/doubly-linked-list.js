@@ -110,6 +110,15 @@ class DoublyLinkedList {
     return current;
   }
 
+  // update the value at a specific index
+  set(index, val) {
+    const node = this.get(index);
+    if (node) {
+      node.val = val;
+      return true;
+    } else return false;
+  }
+
   print() {
     let current = this.head;
     const arr = [];
