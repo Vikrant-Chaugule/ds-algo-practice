@@ -85,6 +85,31 @@ class DoublyLinkedList {
     return this;
   }
 
+  // get the value at a specific index
+  get(index) {
+    if (index < 0 || index >= this.length) return; // out of bound
+    const mid = Math.floor(this.length / 2);
+    let counter = index;
+    let current;
+
+    // check if the index is in the first half
+    if (counter <= mid) {
+      current = this.head;
+      while (counter > 0) {
+        current = current.next;
+        counter--;
+      }
+    } else {
+      // index is in the second half
+      current = this.tail;
+      while (counter < this.length - 1) {
+        current = current.prev;
+        counter++;
+      }
+    }
+    return current;
+  }
+
   print() {
     let current = this.head;
     const arr = [];
