@@ -51,6 +51,24 @@ class DoublyLinkedList {
     return currentTail;
   }
 
+  // remove from the beginning of the list
+  shift() {
+    if (!this.head) return;
+
+    const currentHead = this.head;
+
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = currentHead.next;
+      this.head.prev = null;
+      currentHead.next = null; // clear the references or it will cause memory leaks
+    }
+    this.length--;
+    return currentHead;
+  }
+
   print() {
     let current = this.head;
     const arr = [];
