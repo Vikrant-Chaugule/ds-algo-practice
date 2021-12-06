@@ -15,6 +15,7 @@ class DoublyLinkedList {
     this.tail = null;
   }
 
+  // push to the end of the list
   push(val) {
     const newNode = new Node(val);
 
@@ -29,6 +30,25 @@ class DoublyLinkedList {
     }
     this.length++;
     return this;
+  }
+
+  // pop from the end of the list
+  pop() {
+    if (!this.head) return;
+
+    const currentTail = this.tail;
+
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.tail = currentTail.prev;
+      this.tail.next = null;
+      currentTail.prev = null; // clear the references or it will cause memory leaks
+    }
+
+    this.length--;
+    return currentTail;
   }
 
   print() {
