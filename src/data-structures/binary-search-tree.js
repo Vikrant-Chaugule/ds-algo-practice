@@ -13,6 +13,7 @@ class BinarySearchTree {
     this.root = null;
   }
 
+  // insert a node into the tree
   insert(val) {
     let newNode = new Node(val);
     if (!this.root) {
@@ -41,6 +42,20 @@ class BinarySearchTree {
         }
       }
     }
+  }
+
+  // find a node in the tree
+  find(val) {
+    if (!this.root || !val) return;
+    let currentNode = this.root;
+    while (currentNode) {
+      if (val < currentNode.val) {
+        currentNode = currentNode.left;
+      } else if (val > currentNode.val) {
+        currentNode = currentNode.right;
+      } else return true;
+    }
+    return false; // not found
   }
 }
 
