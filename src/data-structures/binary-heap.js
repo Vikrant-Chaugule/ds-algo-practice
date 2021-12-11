@@ -38,6 +38,54 @@ class MaxBinaryHeap {
   getParent(index) {
     return Math.floor((index - 1) / 2);
   }
+
+  extractMax() {
+    let max = this.values[0];
+    let end = this.values.pop();
+    this.values[0] = end;
+    this.bubbleDown();
+    return max;
+  }
+
+  bubbleDown() {
+    let index = 0;
+    let leftIndex = 2 * index + 1;
+    let rightIndex = 2 * index + 2;
+    let leftChild = null;
+    let rightChild = null;
+    let length = this.values.length;
+    let swapIndex = null;
+    while (true) {
+      if (leftIndex < length && rightIndex < length) {
+        leftChild = this.values[leftIndex];
+        rightChild = this.values[rightIndex];
+        if (leftChild > rightChild) {
+          swapIndex = leftIndex;
+        } else {
+          swapIndex = rightIndex;
+        }
+      } else if (leftIndex < length) {
+        swapIndex = leftIndex;
+      } else if (rightIndex < length) {
+        swapIndex = rightIndex;
+      }
+
+      if (swapIndex === null) {
+        break;
+      }
+
+      if (this.values[index] < this.values[swapIndex]) {
+        [this.values[index], this.values[swapIndex]] = [
+          this.values[swapIndex],
+          this.values[index],
+        ];
+        index = swapIndex;
+        leftIndex = 2 * index + 1;
+        rightIndex = 2 * index + 2;
+      }
+      swapIndex = null;
+    }
+  }
 }
 
 let heap = new MaxBinaryHeap();
