@@ -25,6 +25,15 @@ class Graph {
       (v) => v !== vertex1
     );
   }
+
+  // remove vertex from the graph
+  removeVertex(vertex) {
+    while (this.adjacencyList[vertex].length) {
+      let adjacentVertex = this.adjacencyList[vertex].pop();
+      this.removeEdge(adjacentVertex, vertex);
+    }
+    delete this.adjacencyList[vertex];
+  }
 }
 
 let graph = new Graph();
