@@ -35,7 +35,7 @@ class Graph {
     delete this.adjacencyList[vertex];
   }
 
-  // traverse the graph recursively
+  // traverse the graph recursively using DFS
   // Visit the vertex and then visit all the adjacent vertices
   // Mark the vertex as visited and push into the result array
   DFSRecusrsive(vertex) {
@@ -46,8 +46,8 @@ class Graph {
       if (!vertex) return;
       visited[vertex] = true;
       result.push(vertex);
-      const neighbourCertices = this.adjacencyList[vertex];
-      neighbourCertices.map((ver) => {
+      const neighbourVertices = this.adjacencyList[vertex];
+      neighbourVertices.map((ver) => {
         if (!visited[ver]) return helperFunction(ver);
       });
     };
@@ -56,7 +56,7 @@ class Graph {
     return result;
   }
 
-  // traverse the graph iteratively
+  // traverse the graph iteratively using DFS
   DFSIterative(start) {
     const result = [];
     const visited = {};
@@ -68,6 +68,26 @@ class Graph {
         result.push(vertex);
         stack = stack.concat(this.adjacencyList[vertex]);
       }
+    }
+    return result;
+  }
+
+  // traverse the graph iteratively using BFS
+  BFS(start) {
+    const queue = [start];
+    const result = [];
+    const visited = {};
+    visited[start] = true;
+    while (queue.length) {
+      let vertex = queue.shift();
+      result.push(vertex);
+      let neighbours = this.adjacencyList[vertex];
+      neighbours.forEach((vert) => {
+        if (!visited[vert]) {
+          visited[vert] = true;
+          queue.push(vert);
+        }
+      });
     }
     return result;
   }
