@@ -55,6 +55,22 @@ class Graph {
     helperFunction(vertex);
     return result;
   }
+
+  // traverse the graph iteratively
+  DFSIterative(start) {
+    const result = [];
+    const visited = {};
+    let stack = [start];
+    while (stack.length) {
+      let vertex = stack.pop();
+      if (!visited[vertex]) {
+        visited[vertex] = true;
+        result.push(vertex);
+        stack = stack.concat(this.adjacencyList[vertex]);
+      }
+    }
+    return result;
+  }
 }
 
 let graph = new Graph();
@@ -91,3 +107,4 @@ graph.addEdge("E", "F");
 //        F
 
 graph.DFSRecusrsive("A"); // A B D E C F
+graph.DFSIterative("A"); // A C E F D B
