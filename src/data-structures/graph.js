@@ -34,14 +34,60 @@ class Graph {
     }
     delete this.adjacencyList[vertex];
   }
+
+  // traverse the graph recursively
+  // Visit the vertex and then visit all the adjacent vertices
+  // Mark the vertex as visited and push into the result array
+  DFSRecusrsive(vertex) {
+    const result = [];
+    const visited = {};
+
+    const helperFunction = (vertex) => {
+      if (!vertex) return;
+      visited[vertex] = true;
+      result.push(vertex);
+      const neighbourCertices = this.adjacencyList[vertex];
+      neighbourCertices.map((ver) => {
+        if (!visited[ver]) return helperFunction(ver);
+      });
+    };
+
+    helperFunction(vertex);
+    return result;
+  }
 }
 
 let graph = new Graph();
-graph.addVertex("Tokyo");
-graph.addVertex("Pune");
-graph.addVertex("Mumbai");
-graph.addVertex("Chennai");
-graph.addVertex("Sydney");
+// graph.addVertex("Tokyo");
+// graph.addVertex("Pune");
+// graph.addVertex("Mumbai");
+// graph.addVertex("Chennai");
+// graph.addVertex("Sydney");
 
-graph.addEdge("Pune", "Tokyo");
-graph.addEdge("Pune", "Mumbai");
+// graph.addEdge("Pune", "Tokyo");
+// graph.addEdge("Pune", "Mumbai");
+
+graph.addVertex("A");
+graph.addVertex("B");
+graph.addVertex("C");
+graph.addVertex("D");
+graph.addVertex("E");
+graph.addVertex("F");
+
+graph.addEdge("A", "B");
+graph.addEdge("A", "C");
+graph.addEdge("B", "D");
+graph.addEdge("C", "E");
+graph.addEdge("D", "E");
+graph.addEdge("D", "F");
+graph.addEdge("E", "F");
+
+//        A
+//      /   \
+//    B       C
+//    |       |
+//    D  ---  E
+//     \     /
+//        F
+
+graph.DFSRecusrsive("A"); // A B D E C F
