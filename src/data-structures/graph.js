@@ -1,4 +1,4 @@
-// Create a graph using adjacency list
+// Create a graph using adjacency list - UN-WEIGHTED GRAPH
 
 class Graph {
   constructor() {
